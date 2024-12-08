@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Us - DS Thrift Shop</title>
+    <link rel="stylesheet" href="Final Project.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-sidebar">
+            <h1>DS THRIFT SHOP</h1>
+            <div class="logo-container">
+                <img src="dslogo.png" alt="DS Thrift Shop Logo">
+            </div>
+            <div id="user-account-info" class="account-info">
+                <p id="account-name"></p>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="signupform.html" class="btn">Sign Up</a></li>
+                <li><a href="T-shirt.html">T-Shirts</a></li>
+                <li><a href="Jacket.html">Jacket</a></li>
+                <li><a href="Pants.html">Pants</a></li>
+                <li id="logout-btn-container" style="display: none;"><button id="logout-btn" onclick="logout()">Log Out</button></li>
+            </ul>
+        </div>
+
+        <div class="right-content">
+            <header>
+                <div class="logo">
+                    <h1>DS THRIFT SHOP</h1>
+                    <img src="dslogo.png" alt="Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="contactus.html">Contact</a></li>
+                </ul>
+            </header>
+
+            <section id="contact">
+                <h2>Contact Us</h2>
+                <p>If you have any questions or inquiries, feel free to reach out to us using the form below. We're here to help!</p>
+                <form id="contact-form">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            const accountNameElement = document.getElementById('account-name');
+            const logoutBtnContainer = document.getElementById('logout-btn-container');
+    
+            if (loggedInUser) {
+                accountNameElement.innerHTML = `Welcome, <strong>${loggedInUser.username}</strong>!`;
+                logoutBtnContainer.style.display = 'block';
+            } else {
+                accountNameElement.innerHTML = `Hello, Guest! <a href="signupform.html" class="btn">Sign Up</a>`;
+                logoutBtnContainer.style.display = 'none';
+            }
+        };
+    
+        function logout() {
+            localStorage.removeItem('loggedInUser');
+            alert("Logged out successfully!");
+            window.location.href = "signupform.html";
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+           
+            alert("Your message has been delivered! The owner will read it within 24 hours.");
+
+        
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        });
+    </script>
+
+</body>
+</html>
