@@ -125,11 +125,11 @@
 </div>
 
 <script>
-    // Select cart items and buttons
+   
     const cartItems = document.getElementById('cart-items');
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     
-    // Function to update the cart UI
+   
     function updateCart() {
         const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
         cartItems.innerHTML = ''; 
@@ -147,7 +147,7 @@
         });
     }
 
-    // Function to remove an item from the cart
+
     function removeFromCart(index) {
         const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
         cart.splice(index, 1); 
@@ -155,13 +155,13 @@
         updateCart(); 
     }
 
-    // Function to toggle the cart display
+ 
     function toggleCart() {
         const cart = document.getElementById('floating-cart');
         cart.style.display = cart.style.display === 'block' ? 'none' : 'block';
     }
 
-    // Function for checkout
+ 
     function checkout() {
         const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
         if (cart.length === 0) {
@@ -171,12 +171,12 @@
         }
     }
 
-    // Function to close the payment popup
+   
     function closePaymentPopup() {
         document.getElementById('payment-popup').style.display = 'none';
     }
 
-    // Add "Add to Cart" button functionality
+
     addToCartButtons.forEach((button) => {
         button.addEventListener('click', function () {
             const product = this.getAttribute('data-product');
@@ -190,7 +190,7 @@
         });
     });
 
-    // Event listener for payment method change
+  
     const paymentMethodSelect = document.getElementById('payment-method');
     const additionalInfoDiv = document.getElementById('additional-info');
 
@@ -204,7 +204,7 @@
         }
     });
 
-    // Payment form submission
+  
     const paymentDetailsForm = document.getElementById('payment-details-form');
     paymentDetailsForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -223,7 +223,7 @@
         updateCart(); 
     });
 
-    // Logout functionality
+ 
     function logout() {
         localStorage.removeItem('loggedInUser'); // Remove logged-in user data
         sessionStorage.removeItem('cart'); 
@@ -231,7 +231,7 @@
         window.location.href = "signupform.html"; 
     }
 
-    // Update the UI based on login status
+ 
     window.onload = function() {
         const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
         const accountNameElement = document.getElementById('account-name');
@@ -245,7 +245,7 @@
             logoutBtnContainer.style.display = 'none';
         }
 
-        updateCart(); // Ensure the cart is updated when the page loads
+        updateCart(); 
     };
 </script>
 
