@@ -464,7 +464,7 @@ body.about-us-page {
     background-color: #45a049;
 }
 
-/* Media Queries for Responsive Design */
+
 @media (max-width: 1200px) {
     .left-sidebar {
         width: 220px;
